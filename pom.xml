@@ -23,7 +23,7 @@
     <groupId>io.confluent</groupId>
     <artifactId>kafka-connect-hdfs</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.1</version>
+    <version>3.0.1.periods-fix</version>
     <name>kafka-connect-hdfs</name>
     <organization>
         <name>Confluent, Inc.</name>
