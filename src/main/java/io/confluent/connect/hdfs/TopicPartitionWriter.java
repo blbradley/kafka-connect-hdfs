@@ -291,7 +291,7 @@ public class TopicPartitionWriter {
       } catch (SchemaProjectorException | IllegalWorkerStateException | HiveMetaStoreException e ) {
         throw new RuntimeException(e);
       } catch (IOException | ConnectException e) {
-        log.error("Exception on {}.", tp);
+        log.error("Exception on topic partition {}: ", tp, e);
         failureTime = System.currentTimeMillis();
         setRetryTimeout(timeoutMs);
         break;
@@ -429,7 +429,7 @@ public class TopicPartitionWriter {
     if (tempFiles.containsKey(encodedPartition)) {
       tempFile = tempFiles.get(encodedPartition);
     } else {
-      String directory = HdfsSinkConnecorConstants.TEMPFILE_DIRECTORY + getDirectory(encodedPartition);
+      String directory = HdfsSinkConnectorConstants.TEMPFILE_DIRECTORY + getDirectory(encodedPartition);
       tempFile = FileUtils.tempFileName(url, topicsDir, directory, extension);
       tempFiles.put(encodedPartition, tempFile);
     }
